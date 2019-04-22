@@ -1,4 +1,4 @@
-package uni7.web.produtos;
+package uni7.web.compras;
 
 import java.io.IOException;
 
@@ -9,27 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/produtos")
-public class ProdutosServlet extends HttpServlet{
-	
-	@Inject 
-	private ProdutosController controller;
+@WebServlet("/compras")
+public class ComprasServlet extends HttpServlet {
+
+	@Inject
+	private ComprasController controller;
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5134269536524681582L;
-
-		/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	private static final long serialVersionUID = -725158160013560878L;
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String acao = request.getParameter("acao");
-		
-		if(acao.equalsIgnoreCase("listar")) {
-			controller.listar();
-		}
+		System.out.println("get");
 	}
 
 	/**
@@ -39,5 +32,5 @@ public class ProdutosServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
+
 }

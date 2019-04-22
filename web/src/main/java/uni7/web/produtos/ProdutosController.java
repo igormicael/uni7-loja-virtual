@@ -1,10 +1,12 @@
 package uni7.web.produtos;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.EJB;
 
-import uni7.ejb.estoque.EstoqueBean;
+import uni7.ejb.biz.produto.ProdutoBean;
+import uni7.ejb.models.Produto;
 
 public class ProdutosController  implements Serializable  {
 	
@@ -14,10 +16,10 @@ public class ProdutosController  implements Serializable  {
 	private static final long serialVersionUID = -2119056742065360058L;
 	
 	@EJB
-	private EstoqueBean bean;
+	private ProdutoBean bean;
 
-	public String acao(String txt) {
-		return bean.acao(txt);
+	public List<Produto> listar(){
+		return bean.listar();
 	}
 
 }

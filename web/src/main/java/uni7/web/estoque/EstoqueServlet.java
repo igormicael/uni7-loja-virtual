@@ -1,4 +1,4 @@
-package uni7.web.produtos;
+package uni7.web.estoque;
 
 import java.io.IOException;
 
@@ -9,35 +9,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/produtos")
-public class ProdutosServlet extends HttpServlet{
+@WebServlet("/estoque")
+public class EstoqueServlet extends HttpServlet{
 	
-	@Inject 
-	private ProdutosController controller;
+	private static final long serialVersionUID = -440030668501537079L;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5134269536524681582L;
-
-		/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	@Inject
+	private EstoqueController controller;
+	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acao = request.getParameter("acao");
 		
-		if(acao.equalsIgnoreCase("listar")) {
+		if(acao.equalsIgnoreCase("consultar")) {
 			controller.listar();
 		}
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		
 	}
 	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO: criar logica para o cadastrar
+	}
+
 }
