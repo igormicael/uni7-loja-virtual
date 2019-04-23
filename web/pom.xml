@@ -3,14 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>uni7</groupId>
+		<groupId>br.com.im</groupId>
 		<artifactId>loja-virtual</artifactId>
 		<version>1.0</version>
 	</parent>
-	<groupId>uni7.web</groupId>
 	<artifactId>web</artifactId>
-	<name>web</name>
 	<packaging>war</packaging>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -42,8 +41,8 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>uni7.ejb</groupId>
-			<artifactId>ejb</artifactId>
+			<groupId>br.com.im</groupId>
+			<artifactId>negocio</artifactId>
 			<version>1.0</version>
 			<type>ejb</type>
 			<scope>provided</scope>

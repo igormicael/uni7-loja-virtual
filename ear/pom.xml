@@ -1,16 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-	<groupId>uni7</groupId>
-	<artifactId>loja-virtual</artifactId>
-	<version>1.0</version>
-  </parent>
-  <groupId>uni7.ear</groupId>
-  <artifactId>ear</artifactId>
-  <name>ear</name>
-  <packaging>ear</packaging>
-  <build>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>br.com.im</groupId>
+		<artifactId>loja-virtual</artifactId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>ear</artifactId>
+	<name>ear</name>
+	<packaging>ear</packaging>
+	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-ear-plugin</artifactId>
@@ -18,34 +18,42 @@
 				<configuration>
 					<modules>
 						<ejbModule>
-							<groupId>uni7.ejb</groupId>
-							<artifactId>ejb</artifactId>
-							<bundleFileName>ejb.jar</bundleFileName>
+							<groupId>br.com.im</groupId>
+							<artifactId>negocio</artifactId>
+							<uri>/negocio-1.0.jar</uri>
 						</ejbModule>
 						<webModule>
-							<groupId>uni7.web</groupId>
+							<groupId>br.com.im</groupId>
 							<artifactId>web</artifactId>
-							<bundleFileName>web.war</bundleFileName>
+							<uri>/web-1.0.war</uri>
 						</webModule>
 					</modules>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<release>11</release>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-  <dependencies>
-    <dependency>
-		<groupId>uni7.ejb</groupId>
-		<artifactId>ejb</artifactId>
-		<version>1.0</version>
-		<type>ejb</type>
-		<scope>runtime</scope>
-	</dependency>
-	<dependency>
-		<groupId>uni7.web</groupId>
-		<artifactId>web</artifactId>
-		<version>1.0</version>
-		<type>war</type>
-		<scope>runtime</scope>
-	</dependency>
-  </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>br.com.im</groupId>
+			<artifactId>negocio</artifactId>
+			<version>1.0</version>
+			<type>ejb</type>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>br.com.im</groupId>
+			<artifactId>web</artifactId>
+			<version>1.0</version>
+			<type>war</type>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
 </project>
