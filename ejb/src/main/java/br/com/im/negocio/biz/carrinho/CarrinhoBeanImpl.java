@@ -12,12 +12,12 @@ public class CarrinhoBeanImpl implements CarrinhoBean{
 
 	@PostConstruct
     void postConstruct() {
-    	System.out.println("SlBean " + this.toString() + " foi construido!");
+    	System.out.println("postConstruct");
     }
     
     @PreDestroy
     void preDestroy() {
-    	System.out.println("SlBean " + this.toString() + " será destruido!");
+    	System.out.println("preDestroy");
     }
     
     public String acao(String acao) {

@@ -19,8 +19,8 @@ public class ProdutosDaoImpl implements ProdutosDao{
 		lista = new ArrayList<>();
 		
 		lista.add(new Produto(1L, "Arroz", BigDecimal.ONE));
-		lista.add(new Produto(2L, "Feijão", BigDecimal.ONE));
-		lista.add(new Produto(3L, "Macarrão", BigDecimal.ONE));
+		lista.add(new Produto(2L, "Feijao", BigDecimal.ONE));
+		lista.add(new Produto(3L, "Macarrao", BigDecimal.ONE));
 	}
 	
 	public List<Produto> listar() {
