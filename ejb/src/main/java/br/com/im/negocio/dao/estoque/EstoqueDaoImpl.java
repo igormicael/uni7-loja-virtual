@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.Stateless;
 
 import br.com.im.negocio.models.Estoque;
 import br.com.im.negocio.models.ItemEstoque;
 import br.com.im.negocio.models.Produto;
 
-public class EstoqueDaoImpl implements EstoqueDao {
+@Stateless
+public class EstoqueDaoImpl implements EstoqueDao{
 	
 	private Estoque estoque = null;
 	
@@ -26,12 +28,10 @@ public class EstoqueDaoImpl implements EstoqueDao {
 		
 	}
 
-	@Override
 	public Estoque listar() {
 		return estoque;
 	}
 
-	@Override
 	public void inserirItem(ItemEstoque item) {
 		if(estoque != null && estoque.getItens() != null) {
 			estoque.getItens().add(item);

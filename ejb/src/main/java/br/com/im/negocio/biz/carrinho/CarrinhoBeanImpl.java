@@ -2,12 +2,10 @@ package br.com.im.negocio.biz.carrinho;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 @Stateless
-@LocalBean
-public class CarrinhoBeanImpl implements CarrinhoBean {
+public class CarrinhoBeanImpl implements CarrinhoBean{
 	
     public CarrinhoBeanImpl() {
 	}
@@ -22,7 +20,6 @@ public class CarrinhoBeanImpl implements CarrinhoBean {
     	System.out.println("SlBean " + this.toString() + " será destruido!");
     }
     
-    @Override
     public String acao(String acao) {
     	return "Acao " + acao + " realizada! ";
     }

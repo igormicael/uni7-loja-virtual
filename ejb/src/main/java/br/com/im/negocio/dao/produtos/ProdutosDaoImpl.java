@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import javax.ejb.Stateless;
 
 import br.com.im.negocio.models.Produto;
 
-@ApplicationScoped
-public class ProdutosDaoImpl implements ProdutosDao {
+@Stateless
+public class ProdutosDaoImpl implements ProdutosDao{
 
 	List<Produto> lista = null;
 	
@@ -23,7 +23,6 @@ public class ProdutosDaoImpl implements ProdutosDao {
 		lista.add(new Produto(3L, "Macarrão", BigDecimal.ONE));
 	}
 	
-	@Override
 	public List<Produto> listar() {
 		return lista;
 	}

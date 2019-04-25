@@ -20,12 +20,13 @@
 						<ejbModule>
 							<groupId>br.com.im</groupId>
 							<artifactId>negocio</artifactId>
-							<uri>/negocio-1.0.jar</uri>
+							<uri>/negocio.jar</uri>
 						</ejbModule>
 						<webModule>
 							<groupId>br.com.im</groupId>
 							<artifactId>web</artifactId>
-							<uri>/web-1.0.war</uri>
+							<uri>/loja.war</uri>
+							<contextRoot>loja</contextRoot>
 						</webModule>
 					</modules>
 				</configuration>
