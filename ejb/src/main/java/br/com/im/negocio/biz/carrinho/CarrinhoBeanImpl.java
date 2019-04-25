@@ -2,9 +2,9 @@ package br.com.im.negocio.biz.carrinho;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 
-@Stateless
+@Stateful
 public class CarrinhoBeanImpl implements CarrinhoBean{
 	
     public CarrinhoBeanImpl() {
