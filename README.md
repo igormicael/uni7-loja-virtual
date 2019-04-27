@@ -26,3 +26,9 @@ docker build -t loja .
 docker run -p 9990:9990 -p 8080:8080 loja
 ```
 
+#### Acessar em
+
+```sh
+http://localhost:8080/loja
+```
+
