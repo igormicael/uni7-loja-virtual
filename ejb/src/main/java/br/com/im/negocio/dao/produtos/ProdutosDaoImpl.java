@@ -1,30 +1,21 @@
 package br.com.im.negocio.dao.produtos;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import br.com.im.negocio.models.Produto;
+import br.com.im.negocio.utils.InfoBean;
 
 @Stateless
 public class ProdutosDaoImpl implements ProdutosDao{
 
-	List<Produto> lista = null;
-	
-	@PostConstruct
-	public void inicializar() {
-		lista = new ArrayList<>();
-		
-		lista.add(new Produto(1L, "Arroz", BigDecimal.ONE));
-		lista.add(new Produto(2L, "Feijao", BigDecimal.ONE));
-		lista.add(new Produto(3L, "Macarrao", BigDecimal.ONE));
-	}
+	@EJB
+	private InfoBean infoBean;
 	
 	public List<Produto> listar() {
-		return lista;
+		return infoBean.getProdutos();
 	}
 
 }

@@ -1,5 +1,6 @@
 package br.com.im.negocio.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Estoque {
@@ -20,4 +21,20 @@ public class Estoque {
 	public void setItens(List<ItemEstoque> itens) {
 		this.itens = itens;
 	}
+	
+	public void adicionarItem(ItemEstoque item) {
+		if(itens == null) {
+			itens = new ArrayList<>();
+		}
+		if(!itens.contains(item)) {
+			itens.add(item);
+		}
+	}
+	
+	public void removerItem(ItemEstoque item) {
+		if(itens != null && itens.contains(item)) {
+			itens.remove(item);
+		}
+	}
+	
 }
