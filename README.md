@@ -26,9 +26,25 @@ docker build -t loja .
 docker run -p 9990:9990 -p 8080:8080 loja
 ```
 
-#### Acessar em
+### Urls
+
+Todas as urls responderão no formato **JSON**.
+
+#### Listagem de itens do estoque
 
 ```sh
-http://localhost:8080/loja
+http://localhost:8080/loja/estoque
+```
+
+#### Aumentar quantidade de item do estoque
+
+```sh
+http://localhost:8080/loja/estoque?acao=aumentar&item=1
+```
+
+#### Diminuir quantidade de item do estoque
+
+```sh
+http://localhost:8080/loja/estoque?acao=diminuir&item=1
 ```
 
