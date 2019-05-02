@@ -9,9 +9,9 @@ public interface EstoqueBean {
 	
 	Estoque listar();
 
-	void adicionarItem(String item);
+	void aumentarQuantidade(String item);
 
-	void diminuirItem(String item);
+	void diminuirQuantidade(String item);
 
 
 }

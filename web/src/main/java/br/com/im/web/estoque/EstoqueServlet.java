@@ -37,11 +37,11 @@ public class EstoqueServlet extends HttpServlet{
 		String item = request.getParameter("item");
 		
 		if(item != null) {
-			if(acao.equalsIgnoreCase("adicionar")) {
-				controller.adicionarItem(item);
+			if(acao.equalsIgnoreCase("aumentar")) {
+				controller.aumentarQuantidade(item);
 			}
 			if(acao.equalsIgnoreCase("diminuir")) {
-				controller.diminuirItem(item);
+				controller.diminuirQuantidade(item);
 			}
 		}
 		

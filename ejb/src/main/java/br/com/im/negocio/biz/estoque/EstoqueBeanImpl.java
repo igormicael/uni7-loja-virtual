@@ -31,7 +31,7 @@ public class EstoqueBeanImpl implements EstoqueBean{
 	}
 
 	@Override
-	public void adicionarItem(String item) {
+	public void aumentarQuantidade(String item) {
 		for (ItemEstoque i : listar().getItens()) {
 			if(i.getId() == Long.parseLong(item)) {
 				i.aumentarQuantidade();
@@ -40,7 +40,7 @@ public class EstoqueBeanImpl implements EstoqueBean{
 	}
 
 	@Override
-	public void diminuirItem(String item) {
+	public void diminuirQuantidade(String item) {
 		for (ItemEstoque i : listar().getItens()) {
 			if(i.getId() == Long.parseLong(item)) {
 				i.diminuirQuantidade();;

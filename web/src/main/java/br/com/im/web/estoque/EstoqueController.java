@@ -21,12 +21,12 @@ public class EstoqueController implements Serializable {
 		return bean.listar();
 	}
 	
-	public void adicionarItem(String item) {
-		bean.adicionarItem(item);
+	public void aumentarQuantidade(String item) {
+		bean.aumentarQuantidade(item);
 	}
 
-	public void diminuirItem(String item) {
-		bean.diminuirItem(item);
+	public void diminuirQuantidade(String item) {
+		bean.diminuirQuantidade(item);
 	}
 
 }
