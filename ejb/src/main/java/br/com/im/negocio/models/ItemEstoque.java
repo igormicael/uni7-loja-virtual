@@ -35,5 +35,13 @@ public class ItemEstoque {
 	public void setQuantidade(Long quantidade) {
 		this.quantidade = quantidade;
 	}
+	
+	public void aumentarQuantidade() {
+		quantidade++;
+	}
+	
+	public void diminuirQuantidade() {
+		quantidade--;
+	}
 
 }

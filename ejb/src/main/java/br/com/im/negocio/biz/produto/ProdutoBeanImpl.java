@@ -5,17 +5,17 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import br.com.im.negocio.dao.produtos.ProdutosDao;
 import br.com.im.negocio.models.Produto;
+import br.com.im.negocio.utils.InfoBean;
 
 @Stateless
 public class ProdutoBeanImpl implements ProdutoBean{
 	
 	@EJB
-	private ProdutosDao dao;
+	private InfoBean infoBean;
 	
 	public List<Produto> listar() {
-		return dao.listar();
+		return infoBean.getProdutos();
 	}
 
 }
