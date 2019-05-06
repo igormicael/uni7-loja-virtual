@@ -7,7 +7,7 @@
 		<artifactId>loja-virtual</artifactId>
 		<version>1.0</version>
 	</parent>
-	<artifactId>ear</artifactId>
+	<artifactId>ear-loja</artifactId>
 	<name>ear</name>
 	<packaging>ear</packaging>
 	<build>
