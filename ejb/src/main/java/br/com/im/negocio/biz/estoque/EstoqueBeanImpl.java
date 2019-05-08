@@ -43,7 +43,7 @@ public class EstoqueBeanImpl implements EstoqueBean{
 	public void diminuirQuantidade(String item) {
 		for (ItemEstoque i : listar().getItens()) {
 			if(i.getId() == Long.parseLong(item)) {
-				i.diminuirQuantidade();;
+				i.diminuirQuantidade();
 			}
 		}
 	}

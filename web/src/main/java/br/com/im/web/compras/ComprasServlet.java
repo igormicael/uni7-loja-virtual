@@ -1,6 +1,8 @@
 package br.com.im.web.compras;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -9,7 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/compras")
+import br.com.im.negocio.models.ItemEstoque;
+import br.com.im.web.utils.Utils;
+
+@WebServlet("/carrinho")
 public class ComprasServlet extends HttpServlet {
 
 	@Inject
@@ -22,15 +27,31 @@ public class ComprasServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("get");
-	}
+		PrintWriter out = response.getWriter();
+		
+		String acao = request.getParameter("acao");
+		String produto = request.getParameter("produto");
+		String quantidade = request.getParameter("quantidade");
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		if(acao == null) {
+			acao = "consultar";
+		}
+
+		if(acao.equalsIgnoreCase("adicionar")) {
+			controller.adicionarItem(produto,quantidade);
+		}
+		
+		if(acao.equalsIgnoreCase("remover")) {
+			controller.removerItem(produto,quantidade);
+		}
+		
+		consultar(response, out);
+		
+	}
+	
+	private void consultar(HttpServletResponse response, PrintWriter out) {
+		List<ItemEstoque> itens = controller.getItens();
+		out.print(Utils.formatToJSON(itens, response));
 	}
 
 }

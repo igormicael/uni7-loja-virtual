@@ -1,33 +1,53 @@
 package br.com.im.negocio.biz.carrinho;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
-import br.com.im.negocio.utils.InfoBean;
+import br.com.im.negocio.models.ItemEstoque;
 
 @Stateful
 public class CarrinhoBeanImpl implements CarrinhoBean{
 	
-	@EJB
-	private InfoBean infoBean;
+	private List<ItemEstoque> itensCarrinho;
 	
-    public CarrinhoBeanImpl() {
+	@PostConstruct
+	public void inicializar() {
+		itensCarrinho = new ArrayList<>();
 	}
 
-	@PostConstruct
-    void postConstruct() {
-    	System.out.println("postConstruct");
-    }
-    
-    @PreDestroy
-    void preDestroy() {
-    	System.out.println("preDestroy");
-    }
-    
-    public String acao(String acao) {
-    	return "Acao " + acao + " realizada! ";
-    }
+	@Override
+	public List<ItemEstoque> getItens() {
+		return itensCarrinho;
+	}
+
+	@Override
+	public void adicionarItem(ItemEstoque item) {
+		if(!itensCarrinho.contains(item)) {
+			itensCarrinho.add(item);
+		}else {
+			ItemEstoque itemEstoque = itensCarrinho.get(itensCarrinho.indexOf(item));
+			itemEstoque.aumentarQuantidade();
+		}
+		
+	}
+
+	@Override
+	public void removerItem(ItemEstoque item) {
+		if(!itensCarrinho.contains(item)) {
+			itensCarrinho.add(item);
+		}else {
+			ItemEstoque itemEstoque = itensCarrinho.get(itensCarrinho.indexOf(item));
+			itemEstoque.diminuirQuantidade();
+		}
+	}
+
+	@Override
+	public void finalizarCompra() {
+		// A ser feito
+	}
+	
 
 }

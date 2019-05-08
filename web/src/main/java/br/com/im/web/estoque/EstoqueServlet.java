@@ -2,7 +2,6 @@ package br.com.im.web.estoque;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -11,10 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import br.com.im.negocio.models.Estoque;
-import br.com.im.negocio.models.ItemEstoque;
+import br.com.im.web.utils.Utils;
 
 @WebServlet("/estoque")
 public class EstoqueServlet extends HttpServlet{
@@ -51,16 +48,7 @@ public class EstoqueServlet extends HttpServlet{
 
 	private void consultar(HttpServletResponse response, PrintWriter out) {
 		Estoque estoque = controller.listar();
-		out.print(formatToJSON(estoque, response));
-	}
-	
-	private String formatToJSON(Estoque estoque, HttpServletResponse response) {
-		List<ItemEstoque> itens = estoque.getItens();
-		
-		String estoqueStr = new Gson().toJson(itens);
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        return estoqueStr;
+		out.print(Utils.formatToJSON(estoque.getItens(), response));
 	}
 
 }
