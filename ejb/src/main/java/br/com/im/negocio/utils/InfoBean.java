@@ -59,4 +59,28 @@ public class InfoBean {
 		return produtos;
 	}
 
+	public Produto carregarProduto(Produto produto) {
+		if(produtos != null) {
+			return produtos.get( produtos.indexOf(produto) );
+		}
+		return null;
+	}
+
+	public Boolean diminuirDoEstoque(ItemEstoque item) {
+		
+		Boolean estoqueAcabou = false;
+		
+		List<ItemEstoque> itens = getEstoque().getItens();
+		
+		ItemEstoque itemEstoque = itens.get(itens.indexOf(item));
+		
+		itemEstoque.diminuirQuantidade(item.getQuantidade());
+		
+		if(itemEstoque.getQuantidade() <= 0) {
+			estoqueAcabou = true;
+		}
+		
+		return estoqueAcabou;
+	}
+
 }

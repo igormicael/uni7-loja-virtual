@@ -47,8 +47,12 @@ public class ComprasController implements Serializable {
 		return item;
 	}
 	
-	public void finalizarCompra() {
-		bean.finalizarCompra();
+	public Boolean finalizarCompra() {
+		return bean.finalizarCompra();
+	}
+
+	public void limpar() {
+		bean.limpar();
 	}
 
 }

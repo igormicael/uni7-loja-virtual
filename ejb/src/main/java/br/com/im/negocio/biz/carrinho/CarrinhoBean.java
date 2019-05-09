@@ -8,13 +8,15 @@ import br.com.im.negocio.models.ItemEstoque;
 
 @Local
 public interface CarrinhoBean {
-	
-	 List<ItemEstoque> getItens();
-	 
-	 void adicionarItem(ItemEstoque item);
-	 
-	 void removerItem(ItemEstoque item);
-	 
-	 void finalizarCompra();
+
+	List<ItemEstoque> getItens();
+
+	void adicionarItem(ItemEstoque item);
+
+	void removerItem(ItemEstoque item);
+
+	Boolean finalizarCompra();
+
+	void limpar();
 
 }

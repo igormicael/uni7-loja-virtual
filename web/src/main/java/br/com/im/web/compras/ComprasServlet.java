@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import br.com.im.negocio.models.ItemEstoque;
 import br.com.im.web.utils.Utils;
 
@@ -45,7 +47,29 @@ public class ComprasServlet extends HttpServlet {
 			controller.removerItem(produto,quantidade);
 		}
 		
-		consultar(response, out);
+		if(acao.equalsIgnoreCase("limpar")) {
+			controller.limpar();
+		}
+		
+		if(acao.equalsIgnoreCase("finalizar")) {
+			String mensagem;
+			Boolean resultado = controller.finalizarCompra();
+			
+			if(resultado) {
+				mensagem = "Compra realizada com sucesso!";
+			}else {
+				mensagem = "Compra não realizada, ocorreu um problema ao ....!";
+			}
+			response.setContentType("application/json");
+			response.setCharacterEncoding("UTF-8");
+			
+			out.print(mensagem);
+		}
+		
+		
+		if(!acao.equalsIgnoreCase("finalizar")) {
+			consultar(response, out);
+		}
 		
 	}
 	
