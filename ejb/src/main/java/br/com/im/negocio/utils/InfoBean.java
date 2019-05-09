@@ -83,4 +83,14 @@ public class InfoBean {
 		return estoqueAcabou;
 	}
 
+	public void adicionarNoEstoque(ItemEstoque item) {
+		
+		List<ItemEstoque> itens = getEstoque().getItens();
+		
+		ItemEstoque itemEstoque = itens.get(itens.indexOf(item));
+		
+		itemEstoque.aumentarQuantidade(item.getQuantidade());
+		
+	}
+
 }

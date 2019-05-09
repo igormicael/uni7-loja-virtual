@@ -40,6 +40,10 @@ public class ItemEstoque {
 		quantidade++;
 	}
 	
+	public void aumentarQuantidade(Long q) {
+		quantidade = quantidade + q;
+	}
+	
 	public void diminuirQuantidade() {
 		quantidade--;
 	}

@@ -4,8 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
+import javax.inject.Inject;
+import javax.jms.JMSContext;
+import javax.jms.Queue;
+
+import com.google.gson.Gson;
 
 import br.com.im.negocio.models.ItemEstoque;
 import br.com.im.negocio.models.Produto;
@@ -18,6 +24,12 @@ public class CarrinhoBeanImpl implements CarrinhoBean {
 
 	@EJB
 	private InfoBean infoBean;
+	
+	@Inject
+	private JMSContext context;
+	
+	@Resource(lookup="java:/jms/queue/pQueue")
+	private Queue pQueue;
 
 	@PostConstruct
 	public void inicializar() {
@@ -63,7 +75,14 @@ public class CarrinhoBeanImpl implements CarrinhoBean {
 			for (ItemEstoque itemEstoque : getItens()) {
 				Boolean estoqueAcabou = infoBean.diminuirDoEstoque(itemEstoque);
 				if(estoqueAcabou) {
-					//TODO: solicitar mais produtos atraves de uma fila
+					
+					itemEstoque.setQuantidade(10L);
+					
+					Gson gson = new Gson();
+					
+					String pedido = gson.toJson(itemEstoque);
+					
+					context.createProducer().send(pQueue, pedido);
 				}
 			}
 			
