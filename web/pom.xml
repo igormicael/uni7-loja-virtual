@@ -16,6 +16,18 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.2.2</version>
+				<archive>
+					<manifest>
+						<addDefaultImplementationEntries>true
+						</addDefaultImplementationEntries>
+					</manifest>
+					<!-- manifestFile>${basedir}/src/main/resources/META-INF/MANIFEST.MF</manifestFile -->
+					<manifestEntries>
+						<Implementation-Build>${buildNumberSeq}</Implementation-Build>
+						<url>${pom.url}</url>
+						<built-Date>${maven.build.timestamp} </built-Date>
+					</manifestEntries>
+				</archive>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
