@@ -10,7 +10,7 @@
 	<artifactId>negocio</artifactId>
 	<name>negocio</name>
 	<packaging>ejb</packaging>
-	
+
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -20,6 +20,12 @@
 					<version>3.0.1</version>
 					<configuration>
 						<ejbVersion>3.1</ejbVersion>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true
+								</addDefaultImplementationEntries>
+							</manifest>
+						</archive>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -47,9 +53,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-		    <groupId>com.google.code.gson</groupId>
-		    <artifactId>gson</artifactId>
-		    <version>2.8.5</version>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.5</version>
 		</dependency>
 	</dependencies>
 </project>
