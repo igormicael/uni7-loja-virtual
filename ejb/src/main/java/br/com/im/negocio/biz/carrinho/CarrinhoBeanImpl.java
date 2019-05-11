@@ -49,7 +49,7 @@ public class CarrinhoBeanImpl implements CarrinhoBean {
 			itensCarrinho.add(item);
 		} else {
 			ItemEstoque itemEstoque = itensCarrinho.get(itensCarrinho.indexOf(item));
-			itemEstoque.aumentarQuantidade();
+			itemEstoque.aumentarQuantidade(item.getQuantidade());
 		}
 
 	}
@@ -58,7 +58,11 @@ public class CarrinhoBeanImpl implements CarrinhoBean {
 	public void removerItem(ItemEstoque item) {
 		ItemEstoque itemEstoque = itensCarrinho.get(itensCarrinho.indexOf(item));
 		if (itemEstoque != null) {
-			itemEstoque.diminuirQuantidade();
+			itemEstoque.diminuirQuantidade(item.getQuantidade());
+			
+			if(itemEstoque.getQuantidade() <= 0) {
+				itensCarrinho.remove(itemEstoque);
+			}
 		}
 	}
 	
